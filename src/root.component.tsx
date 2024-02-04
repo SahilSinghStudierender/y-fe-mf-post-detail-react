@@ -1,3 +1,12 @@
-export default function Root(props) {
-  return <section>{props.name} is mounted!</section>;
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import PostDetailComponent from "./post-detail/post-detail.component";
+
+export default function Root() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/post/:id" element={<PostDetailComponent />}></Route>
+      </Routes>
+    </BrowserRouter>
+  );
 }
