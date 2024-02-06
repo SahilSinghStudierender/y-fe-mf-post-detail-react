@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { HttpService } from "../service/http.service";
 import { CommentDto } from "../models/comment-dto";
 import moment from "moment/moment";
+import AngularParcelComponent from "../angular-parcel-component/angular-parcel.component";
 
 export function CommentsComponent({ postId }) {
   const httpService = new HttpService();
@@ -29,6 +30,8 @@ export function CommentsComponent({ postId }) {
       <h3 className="m-0">Comments:</h3>
       <small>Total Comments: {comments.length}</small>
       <div className="mb-1">&nbsp;</div>
+
+      <AngularParcelComponent />
 
       <div className="mt-4">
         {comments.map((comment) => (
