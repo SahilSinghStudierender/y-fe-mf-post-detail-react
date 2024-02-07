@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Parcel from "single-spa-react/parcel";
 
-const AngularParcelComponent = () => {
+const AngularParcelComponent = ({ postId }) => {
   const [parcelConfig, setParcelConfig] = useState(null);
 
   useEffect(() => {
@@ -16,7 +16,7 @@ const AngularParcelComponent = () => {
 
   return (
     <>
-      <Parcel config={parcelConfig} />
+      <Parcel config={parcelConfig} postId={postId} />
     </>
   );
 };
