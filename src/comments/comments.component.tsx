@@ -12,6 +12,17 @@ export function CommentsComponent({ postId }) {
   useEffect(() => {
     loadComments().then(() => {});
     // eslint-disable-next-line react-hooks/exhaustive-deps
+
+    const handleAngularEvent = (event) => {
+      //console.log("Received data from Angular parcel:", event.detail.comment);
+      setComments((prevComments) => [...prevComments, event.detail.comment]);
+    };
+
+    window.addEventListener("commentAdded", handleAngularEvent);
+    // Cleanup the event listener
+    return () => {
+      window.removeEventListener("commentAdded", handleAngularEvent);
+    };
   }, []);
 
   const loadComments = async () => {
@@ -31,7 +42,7 @@ export function CommentsComponent({ postId }) {
       <small>Total Comments: {comments.length}</small>
       <div className="mb-1">&nbsp;</div>
 
-      <AngularParcelComponent />
+      <AngularParcelComponent postId={postId} />
 
       <div className="mt-4">
         {comments.map((comment) => (
